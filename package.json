@@ -1,7 +1,7 @@
 {
   "name": "pod",
-  "version": "1.0.0",
-  "description": "pod: An Ionic project",
+  "version": "0.0.1",
+  "description": "pod: A podcatcher",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^1.3.3",
