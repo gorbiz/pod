@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $q) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,11 +21,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       StatusBar.styleLightContent();
     }
 
+    function uriToText(uri) {
+      var deferred = $q.defer();
+      try {
+        window.resolveLocalFileSystemURL(uri, function(fileEntry) {
+          fileEntry.file(function(file) {
+            var reader = new FileReader();
+            reader.onloadend = function(e) { deferred.resolve(e.target.result); };
+            reader.readAsText(file);
+          });
+        }, deferred.reject);
+      } catch (err) {
+        deferred.reject(err);
+      }
+      return deferred.promise;
+    }
+
+
+
     function handleExtras() {
-      console.log('handleExtras');
-      window.plugins.webintent.getExtra(plugins.webintent.EXTRA_STREAM, function(data) {
-        console.warn('Got extra: ' + data + ' ...but handling not implemented');
+      window.plugins.webintent.getExtra(plugins.webintent.EXTRA_STREAM, function(uri) {
+        uriToText(uri).then(function(content) {
+          var xml = (new window.DOMParser()).parseFromString(content, 'text/xml');
+          var nodes = xml.documentElement.querySelectorAll('outline');
+          for (var i = 0; i < nodes.length; i++) {
+            var url = nodes.item(i).getAttribute('xmlUrl');
+            subscribe(url);
+          }
+        });
       });
+    }
+
+    function subscribe(url) {
+      console.warn('Not implemented subscribe(' + url + ')');
     }
 
     // listen for intents to import OPML from Podkicker (+ future others)

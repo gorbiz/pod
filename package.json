@@ -41,7 +41,8 @@
     {
       "locator": "https://github.com/gorbiz/cordova-webintent.git",
       "id": "com.gorbiz.webintent"
-    }
+    },
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": [
     "android"
