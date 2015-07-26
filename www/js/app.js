@@ -20,6 +20,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+    function handleExtras() {
+      console.log('handleExtras');
+      window.plugins.webintent.getExtra(plugins.webintent.EXTRA_STREAM, function(data) {
+        console.warn('Got extra: ' + data + ' ...but handling not implemented');
+      });
+    }
+
+    // listen for intents to import OPML from Podkicker (+ future others)
+    window.plugins.webintent.hasExtra(plugins.webintent.EXTRA_STREAM, function(has) {
+      has && handleExtras();
+    }, function(err) {
+      console.error('error checking for Extras (Message: ' + err + ')');
+    });
+
+    window.plugins.webintent.onNewIntent(function(url) {
+      console.debug('onNewIntent');
+      window.plugins.webintent.hasExtra(plugins.webintent.EXTRA_STREAM, function(has) {
+        has && handleExtras();
+      });
+    });
   });
 })
 
