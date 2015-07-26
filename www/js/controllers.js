@@ -3,8 +3,14 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {
   // DEBUG data
   $scope.items = [
-    { title: 'Derpus', desc: 'A derpus zerpus from kurpuz' },
-    { title: 'Zerpus', desc: 'The best show in the verse.', logo: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png' }
+    { title: 'Stuff You Should Know',
+      desc: 'How do landfills work? How do mosquitos work? Join Josh and Chuck as they explore the Stuff You Should Know about everything from genes to the Galapagos in this podcast from HowStuffWorks.com.',
+      logo: 'http://podcasts.howstuffworks.com/hsw/podcasts/sysk/sysk-audio-1600.jpg',
+      url: 'http://feeds.feedburner.com/RoderickOnTheLine' },
+    { title: 'Roderick on the Line',
+      desc: 'Merlin Mann\'s frank &amp; candid weekly phone call with John Roderick of The Long Winters',
+      logo: 'http://static1.1.sqspcdn.com/static/f/512802/25771902/1418614615047/rotl-logo-300-sq.jpg?token=%2FCaFS9Zl%2BAKombN7PtgMF0xFZiQ%3D',
+      url: 'https://feeds.feedburner.com/RoderickOnTheLine' }
   ];
 })
 
