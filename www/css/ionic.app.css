@@ -7692,3 +7692,8 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.podcast {
+  height: 1em; }
+  .podcast .item-content p.desc {
+    white-space: normal; }
