@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, Pod) {
   // DEBUG data
   $scope.items = [
     { title: 'Stuff You Should Know',
@@ -12,9 +12,13 @@ angular.module('starter.controllers', [])
       logo: 'http://static1.1.sqspcdn.com/static/f/512802/25771902/1418614615047/rotl-logo-300-sq.jpg?token=%2FCaFS9Zl%2BAKombN7PtgMF0xFZiQ%3D',
       url: 'https://feeds.feedburner.com/RoderickOnTheLine' }
   ];
+
+  $scope.add = function(url) {
+    Pod.add(url);
+  };
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -22,19 +26,8 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+
 });
