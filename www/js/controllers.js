@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   // DEBUG data
   $scope.items = [
     { title: 'Derpus', desc: 'A derpus zerpus from kurpuz' },
-    { title: 'Zerpus', desc: 'The best show in the verse.' }
+    { title: 'Zerpus', desc: 'The best show in the verse.', logo: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png' }
   ];
 })
 
