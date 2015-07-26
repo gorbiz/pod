@@ -13,6 +13,17 @@ angular.module('starter.controllers', [])
       url: 'https://feeds.feedburner.com/RoderickOnTheLine' }
   ];
 
+  $scope.importPodkicker = function() {
+    navigator.startApp.check('com.podkicker', function() {
+      navigator.startApp.start([['com.podkicker', 'com.podkicker.Podkicker']], function() {
+      }, function(err) {
+          console.error('Failed to start Podkicker');
+      });
+    }, function(err) {
+      console.error('Failed to find Podkicker app on your phone...');
+    });
+  };
+
   $scope.add = function(url) {
     Pod.add(url);
   };
