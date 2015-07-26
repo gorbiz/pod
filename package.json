@@ -2,6 +2,19 @@
   "name": "pod",
   "version": "0.0.1",
   "description": "pod: A podcatcher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gorbiz/pod.git"
+  },
+  "engines": {
+    "node": ">=0.12.4"
+  },
+  "scripts": {
+    "test": "jshint www/js/**.js && jscs www/js && npm run todo --silent",
+    "todo": "which ag > /dev/null && ! ag 'XXX|TODO|FIXME' www/js || ! grep -r 'XXX\\|TODO\\|FIXME' www/js",
+    "build": "ionic resources && ionic build",
+    "start": "ionic run android -lcs"
+  },
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^1.3.3",
